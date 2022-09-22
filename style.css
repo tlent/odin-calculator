@@ -41,6 +41,14 @@ button {
     font-size: 2rem;
 }
 
+button:active {
+    filter: brightness(1.5);
+}
+
+.operator:active {
+    filter: brightness(0.85);
+}
+
 .double {
     grid-column-end: span 2;
 }
