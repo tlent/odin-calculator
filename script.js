@@ -17,10 +17,10 @@ clearButton.addEventListener("click", () => {
         operation = null;
     } else {
         value = null;
-        display.textContent = 0;
-        clearButton.textContent = "AC";
-        periodButton.disabled = false;
     }
+    display.textContent = 0;
+    clearButton.textContent = "AC";
+    periodButton.disabled = false;
 });
 
 equalsButton.addEventListener("click", () => {
