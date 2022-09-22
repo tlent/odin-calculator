@@ -10,27 +10,27 @@
     <div id="calculator">
         <div id="display">0</div>
         <div id="buttons">
-            <button class="function">C</button>
+            <button class="function" id="clear">AC</button>
             <button class="function" id="plus-minus">
                 <span id="plus-minus-plus">+</span>⁄<span id="plus-minus-minus">−</span>
             </button>
-            <button class="function">%</button>
-            <button class="operator">÷</button>
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
-            <button class="operator">×</button>
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
-            <button class="operator">−</button>
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button class="operator">+</button>
-            <button class="double">0</button>
-            <button>.</button>
-            <button class="operator">=</button>
+            <button class="function" id="percent">%</button>
+            <button class="operator" data-operation="divide">÷</button>
+            <button data-digit>7</button>
+            <button data-digit>8</button>
+            <button data-digit>9</button>
+            <button class="operator" data-operation="multiply">×</button>
+            <button data-digit>4</button>
+            <button data-digit>5</button>
+            <button data-digit>6</button>
+            <button class="operator" data-operation="subtract">−</button>
+            <button data-digit>1</button>
+            <button data-digit>2</button>
+            <button data-digit>3</button>
+            <button class="operator" data-operation="add">+</button>
+            <button class="double" data-digit>0</button>
+            <button id="period">.</button>
+            <button class="operator" id="equals">=</button>
 
         </div>
     </div>
