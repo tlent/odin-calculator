@@ -9,7 +9,8 @@ const operatorButtons = document.querySelectorAll("button[data-operation]");
 
 let value = 0;
 let displayingResult = false;
-let stack = [];
+let storedValue = null;
+let storedOp = null;
 
 for (const button of digitButtons) {
     const digit = button.textContent;
@@ -42,28 +43,25 @@ for (const button of operatorButtons) {
     }
     button.addEventListener("click", () => {
         if (displayingResult) {
-            stack = [];
+            storedValue = null;
+            storedOp = null;
         }
-        if (stack.length > 0) {
-            const storedValue = stack.pop();
-            const storedOp = stack.pop();
+        if (storedValue !== null && storedOp !== null) {
             value = storedOp(storedValue, Number(value));
             display.textContent = value;
         }
-        stack.push(op);
-        stack.push(Number(value));
+        storedOp = op;
+        storedValue = Number(value);
         displayingResult = true;
         periodButton.disabled = false;
     });
 }
 
 equalsButton.addEventListener("click", () => {
-    if (stack.length < 2) {
+    if (displayingResult || storedOp === null || storedValue === null) {
         return;
     }
-    const storedValue = stack.pop();
-    const op = stack.pop();
-    value = String(op(storedValue, Number(value)));
+    value = String(storedOp(storedValue, Number(value)));
     display.textContent = value;
     displayingResult = true;
     clearButton.textContent = "C";
@@ -72,8 +70,10 @@ equalsButton.addEventListener("click", () => {
 clearButton.addEventListener("click", () => {
     if (displayingResult || value) {
         value = 0;
+        displayingResult = false;
     } else {
-        stack = [];
+        storedOp = null;
+        storedValue = null;
     }
     display.textContent = 0;
     clearButton.textContent = "AC";
